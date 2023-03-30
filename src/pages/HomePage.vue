@@ -1,9 +1,7 @@
 <template>
   <div class="container-fluid">
-    <section class="row">
-      <div class="col-10">
-        {{ blogs }}
-      </div>
+    <section class="row justify-content-center" v-for="blog in blogs" :key="blog.id">
+      <BlogCard :blog="blog" />
     </section>
   </div>
 </template>
