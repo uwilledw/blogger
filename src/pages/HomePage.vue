@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <section class="row">
       <div class="col-10">
-
+        {{ blogs }}
       </div>
     </section>
   </div>
@@ -12,7 +12,8 @@
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { blogsService } from '../services/BlogsService.js'
-import { onMounted } from 'vue';
+import { onMounted, computed } from 'vue';
+import { AppState } from '../AppState.js';
 
 export default {
 
@@ -32,7 +33,9 @@ export default {
       getBlogs()
     })
 
-    return {}
+    return {
+      blogs: computed(() => AppState.blogs)
+    }
   }
 }
 </script>
