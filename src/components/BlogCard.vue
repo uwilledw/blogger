@@ -1,10 +1,12 @@
 <template>
     <div class="col-10 my-4 elevation-4 d-flex justify-content-between align-items-center p-4 rounded bg-white">
         <div class="m-2">
-            <div class="d-flex align-items-center p-3 selectable rounded mb-3">
-                <img class="img-fluid profile-img" :src="blog.creator.picture" :alt="blog.creator.name">
-                <h5 class="mx-3">{{ blog.creator.name }}</h5>
-            </div>
+            <router-link :to="{ name: 'Profile', params: { profileId: blog.creator.id } }">
+                <div class="d-flex align-items-center p-3 selectable rounded mb-3">
+                    <img class="img-fluid profile-img" :src="blog.creator.picture" :alt="blog.creator.name">
+                    <h5 class="mx-3">{{ blog.creator.name }}</h5>
+                </div>
+            </router-link>
             <div @click="setActiveBlog(blog.id)" data-bs-toggle="modal" data-bs-target="#blogModal"
                 class="selectable p-1 rounded">
                 <p class="fw-bold">{{ blog.title }}</p>
