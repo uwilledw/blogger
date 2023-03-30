@@ -16,7 +16,7 @@ import { AppState } from '../AppState.js';
 export default {
 
   setup() {
-
+    onMounted(() => AppState.activeProfile = null)
     async function getBlogs() {
       try {
         await blogsService.getBlogs()

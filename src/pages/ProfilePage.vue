@@ -8,9 +8,11 @@
                 </h1>
             </div>
         </section>
-        <section class="row">
-            {{ blogs }}
+
+        <section class="row justify-content-center" v-for="blog in blogs" :key="blog.id">
+            <BlogCard :blog="blog" />
         </section>
+
     </div>
 </template>
 
