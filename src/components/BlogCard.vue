@@ -5,7 +5,8 @@
                 <img class="img-fluid profile-img" :src="blog.creator.picture" :alt="blog.creator.name">
                 <h5 class="mx-3">{{ blog.creator.name }}</h5>
             </div>
-            <div class="selectable p-1 rounded">
+            <div @click="setActiveBlog(blog.id)" data-bs-toggle="modal" data-bs-target="#blogModal"
+                class="selectable p-1 rounded">
                 <p class="fw-bold">{{ blog.title }}</p>
                 <p>{{ blog.body.substring(0, 250) }} . . .</p>
             </div>
@@ -22,6 +23,9 @@
 
 <script>
 import { Blog } from '../models/Blog.js';
+import { blogsService } from '../services/BlogsService.js';
+import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop.js';
 
 export default {
 
@@ -33,7 +37,17 @@ export default {
     },
     setup() {
 
-        return {}
+        return {
+
+            setActiveBlog(blogId) {
+                try {
+                    blogsService.setActiveBlog(blogId)
+                } catch (error) {
+                    logger.log(error.message)
+                    Pop.error(error.message)
+                }
+            }
+        }
     }
 }
 </script>

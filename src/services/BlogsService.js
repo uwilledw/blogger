@@ -14,6 +14,11 @@ class BlogsService {
         AppState.blogs = res.data.map(b => new Blog(b))
     }
 
+    setActiveBlog(blogId) {
+        const blog = AppState.blogs.find(b => b.id == blogId)
+        AppState.activeBlog = blog
+        logger.log(AppState.activeBlog, 'active blog')
+    }
 }
 
 export const blogsService = new BlogsService()
