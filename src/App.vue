@@ -8,9 +8,9 @@
   <footer class="bg-dark text-light">
     Made with 💖 by CodeWorks
   </footer>
+  <Modal />
 </template>
 
-<Modal />
 
 <script>
 import { computed } from 'vue'
